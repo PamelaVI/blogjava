@@ -39,12 +39,16 @@ public class Usuario  Serializable {
     private String pais;
 
     @OneToMany(mappedBy= "usuario",fetch=FetchType.Lazy,cascade= CascadeType.ALL)
-    private List<Post>posts;
+    private List<Post>post;
     public List<Post> getPost(){
-        return posts;
+        return post;
     }
-    public void setPost(List<Post>posts){
-        this.posts=posts;
+    public void setPost(List<Post>post){
+        this.post=post;
+    }
+    public void addPost( Post post){
+        this.post.add(post);
+        post.setAutor(this);
     }
 
     public Usuario(){

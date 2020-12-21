@@ -7,21 +7,21 @@ import javax.annotation.Generated;
 @Table(name="Comentario")
 
 public class Comentario {
-    private Long idusuario;
-    private String nombreusuario;
+    private Long id;
+    private String nombre;
     private Date fechacreacion;
     private String comentar;
 
     public Comentario(){
 
     }
-    public Comentario(Long idusuario,String nombreusuario, Date fechacreacion,String comentar){
-        this.idusuario=idusuario;
-        this.nombreusuario=nombreusuario;
+    public Comentario(Long id,String nombre, Date fechacreacion,String comentar){
+        this.id=id;
+        this.nombre=nombre;
         this.fechacreacion=fechacreacion;
         this.comentar=comentar;
     }
 
-    @idusuario
+    @Id
     @GeneratedValue()
 }
