@@ -1,6 +1,5 @@
 package com.blogueando.post.controller;
 import com.blogueando.post.model.Usuario;
-import com.blogueando.post.repository.UsuaioRepository;
 import com.blogueando.post.repository.UsuarioRepository;
 
 import javax.validation.Valid;
