@@ -1,29 +1,30 @@
 package com.blogueando.post.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 @Entity
-@Table(name="Post")
+@Table(name="post")
 public class Post {
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name="titulo")
     private String titulo;
 
-    @Column(name="descripcion")
     private  String descripcion;
     
-    @Column(name="contenido")
     private String contenido;
 
-    @Column(name="fecha")
-    private Date fecha;
+    private Date fechacreacion;
 
-    @Column(name="autor")
-    private String autor;
+    @JoinColumn(name="AUTOR",nullable=false)
+    @ManyToOne
+    private Usuario usuario;
+
+    @OneToMany(cascade=CascadeType.ALL,mappedBy="post")
+    private List<Comentario> comentarios;
 
     public Post(){
 
@@ -33,7 +34,7 @@ public class Post {
         this.titulo=titulo;
         this.descripcion=descripcion;
         this.contenido=contenido;
-        this.fecha=fecha;
+        this.fecha=fechacreacion;
         this.autor=autor;
     }       
 
@@ -42,6 +43,12 @@ public class Post {
     }
     public void setId(Long id){
         this.id=id;
+    }
+    public Usuario getUsuario(){
+    return usuario;
+    }
+    public void setUsuario(Usuario usuario){
+        this.usuario=usuario;
     }
     public String getTitulo(){
         return titulo;
@@ -62,11 +69,11 @@ public class Post {
     public void setContenido(String contenido){
         this.contenido=contenido;
     }
-    public Date getFecha(){
-        return fecha;
+    public Date getFechacreacion(){
+        return fechacreacion;
     }
-    public void setFecha(){
-        this.fecha=fecha;
+    public void setFechacreacion(){
+        this.fecha=fechacreacion;
     }
     public String getAutor(){
         return autor;
@@ -74,6 +81,16 @@ public class Post {
     public void setAutor(){
         this.autor=autor;
     }
+    public List <Comentario>gComentarios(){
+        return comentarios == null ?null: new ArrayList<>(comentarios);
+    }
+    public void setComentarios(List<Comentario> comentarios) {
+		if (comentarios == null) {
+			this.comentarios = null;
+		} else {
+			this.comentarios = Collections.unmodifiableList(comentarios);
+		}
+	}
 
         
 
