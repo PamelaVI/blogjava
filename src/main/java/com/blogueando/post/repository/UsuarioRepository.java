@@ -7,11 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository <Usuario,Long> {
-    UsuarioModel findByEmail(String nombre);
-    List <Usuario>findAllByCiudad( String ciudad);
-    List <Usuario> findUsuarioByFechaCreacion(LocalDate fechacreacion);
-    Optional <Usuario>findById(Long id);
-
     
 }
 
