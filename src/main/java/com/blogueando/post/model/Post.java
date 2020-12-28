@@ -1,11 +1,11 @@
 package com.blogueando.post.model;
-
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 @Entity
 @Table(name="post")
+
 public class Post {
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

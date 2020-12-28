@@ -1,11 +1,11 @@
 package com.blogueando.post.model;
 import java.util.Date;
 import java.util.List;
-import java.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import javax.validation.*;
-import org.springframework.web.bin.annotation;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -15,28 +15,37 @@ public class Usuario  implements Serializable{
     @GeneratedValues(strategy=GeneratedType.AUTO)
     private Long id;
     
-    @Column(name="nombre")
-    private String nombreusuario;
+    @Column(nullable=false)
+    @Size(min=4)
+    private String nombre;
 
-    @Column(name="apellido")
+    @Column(nullable=false)
+    @Size(min=4)
     private String apellido;
 
     @Column(name="email" ,unique=true)
+    @Size(min=4)
     private String email;
 
-    @Column(name="password", nullable=false)
+    @Column(nullable=false)
+    @Size(min=8)
+    @JsonProperty(access=JsonProperty.Acces.WRITE_ONLY)
     private String password;
 
-    @Column(name="fechacreacion")
-    private Date fechacreacion;
+    @Column(updatable=false)
+    @JsonFormat(pattern="dd-MM-yyyy")
+    private LocalDate fechacreacion;
 
-    @Column(name="ciudad")
+    @Column(nullable=false)
+    @Size(min=4)
     private String ciudad;
 
-    @Column(name="provincia")
+    @Column(nullable=false)
+    @Size(min=4)
     private String provincia;
     
-    @Column(name="pais")
+    @Column(nullable=false)
+    @Size(min=4)
     private String pais;
 
     @OneToMany(mappedBy= "usuario",fetch=FetchType.Lazy,cascade= CascadeType.ALL)
@@ -100,11 +109,11 @@ public class Usuario  implements Serializable{
     public void setPassword(String password){
         this.password=password;
     }
-    public Date getFechacreacion(){
+    public LocalDate getFechacreacion(){
         return fechacreacion;
     }
-    public void setFechacreacion( Date fechacreacion){
-        this.fechacreacion=fechacreacion;
+    public void setFechacreacion( LocalDate registDate){
+        this.fechacreacion=registDate;
     }
     public String getCiudad(){
         return ciudad;

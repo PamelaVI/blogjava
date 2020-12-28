@@ -4,7 +4,6 @@ import com.blogueando.post.service.UsuarioService;
 
 import java.util.List;
 
-import javax.validation.Valid;
 import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

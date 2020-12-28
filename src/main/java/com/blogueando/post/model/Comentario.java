@@ -1,7 +1,6 @@
 package com.blogueando.post.model;
 import java.util.Date;
 
-import java.util.regex.Pos;
 
 import javax.annotation.Generated;
 
