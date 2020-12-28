@@ -34,20 +34,22 @@ import jdk.internal.net.http.Response;
 
 
 @RestController
-@RequestMapping("api/")
+@RequestMapping("api/v1/usuario")
 public class UsuarioController {
     @Autowired
-    private  final UsuarioService usuarioService;
+    private   UsuarioService usuarioService;
+    @Autowired 
+    private PostService postService;
 
     @Autowired
     public UsuarioController(UsuarioRepository usuarioRepository){
         this.usuarioRepository=usuarioRepository;
     }
-    @GetMapping("/Usuarios")
+    @GetMapping("/Usuario")
     public List<Usuario>getAllUsuarios(){
         return usuarioService.getAllUsuarios();
     }
-    @GetMapping("/usuarios/{id}")
+    @GetMapping("/Usuario/{id}")
     public ResponseEntity<Usuario>getUsuario(@PathVariable(value ="id")Long id){
         Usuario usuario=usuarioService.getUsuario(id);
         return ResponseEntity.ok().body(usuario);
@@ -55,7 +57,7 @@ public class UsuarioController {
     }
     
     
-    @PostMapping("/usuarios")
+    @PostMapping("/Usuario")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario createUsuario(@RequestBody Usuario usuario) {
             return usuarioService.createUsuario(usuario);
@@ -63,15 +65,15 @@ public class UsuarioController {
         
     
   
-    @PutMapping("/usuarios/{id}/Actualizar")
-    public ResponseEntity<Usuario> updateUsuario(@PathVariable(value="id") Long id,@RequestBody Usuario){
-        Usuario usuario=usuarioService.updateUsuario(id);
+    @PutMapping("/Usuario/{id}/Actualizar")
+    public ResponseEntity<Usuario> updateUsuario(@PathVariable(value="id") Long id,@RequestBody Usuario usuario){
+        Usuario =usuarioService.updateUsuario(id);
         return ResponseEntity.ok(usuario);
     }
        
 
     
-    @DeleteMapping("/usuarios/{id}/eliminar")
+    @DeleteMapping("/Usuario/{id}/eliminar")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUsuarioById(@PathVariable(value= "id") Long id){
         usuarioService.deleteUsuario(id);

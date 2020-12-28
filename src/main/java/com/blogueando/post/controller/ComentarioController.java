@@ -14,19 +14,27 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import jdk.internal.net.http.Response;
-
+import javax.validation.valid;
+import java.util.HashMap;
+import java.util.Map;
 import com.blogueando.post.model.Comentario;
 import com.blogueando.post.model.Post;
+import com.blogueando.post.model.Usuario;
 import com.blogueando.post.service.ComentarioService;
+import com.blogueando.post.repository.UsuarioRepository;
+import com.blogueando.post.repository.ComentarioRepository;
 
 
 @RestController
-@RequestMapping("/comentarios")
+@RequestMapping("/api/v1/comentario")
 public class ComentarioController {
     @Autowired
-    ComentarioService comentarioService;
-    @GetMapping("mostrar/{id}")
+    private ComentarioRepository comentarioRepository;
+
+    @Autowired
+     private UsuarioRepository usuarioRepository;
+
+    @GetMapping("/comentario/mostrar/{id}")
     public List<Comentario> list(){
         return comentarioService.listAllComentario();
     

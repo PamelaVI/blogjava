@@ -45,7 +45,7 @@ public class PostController {
     public ResponseEntity<?>crearComentario(@PathVariable Long id,@RequestBody Comentario comentario){
         Post post = PostRepository.getOne(id);
         Usuario usuario = usuarioRepository.getOne(comentario.getId());
-        Comentario comentario = new Comentario();
+        Comentario comentar = new Comentario();
         comentario.setComentario(comentario.getComentario());
         comentario.setAutor(usuario.getEmail());
         comentario.setFechacreacion(Date.now());
