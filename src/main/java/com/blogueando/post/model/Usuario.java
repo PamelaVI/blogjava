@@ -1,15 +1,16 @@
 package com.blogueando.post.model;
 import java.util.Date;
 import java.util.List;
-
-import javax.annotation.Generated;
+import java.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import javax.validation.*;
+import org.springframework.web.bin.annotation;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import org.springframework.stereotype.Indexed;
 
 @Entity
 @Table(name="Usuario")
-public class Usuario  Serializable {
+public class Usuario  implements Serializable{
     @Id
     @GeneratedValues(strategy=GeneratedType.AUTO)
     private Long id;
@@ -48,7 +49,7 @@ public class Usuario  Serializable {
     }
     public void addPost( Post post){
         this.post.add(post);
-        post.setAutor(this);
+        post.setUsuario(this);
     }
 
     public Usuario(){
@@ -60,8 +61,8 @@ public class Usuario  Serializable {
         this.nombre=nombre;
         this.apellido=apellido;
         this.email=email;
-        this.password=password;
-        this.fechacreacion=fechacreacion;
+        this.password="";
+        this.fechacreacion=" ";
         this.ciudad=ciudad;
         this.provincia=provincia;
         this.pais=pais;

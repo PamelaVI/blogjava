@@ -1,5 +1,6 @@
 package com.blogueando.post.model;
 import java.util.Date;
+
 import java.util.regex.Pos;
 
 import javax.annotation.Generated;
@@ -20,16 +21,16 @@ public class Comentario {
     private Usuario usuario;
     @ManyToOne
     @JoinColumn(name= "FK_POST",nullable=false)
-    Usuario Post posts;
+    Usuario Post;
 
     public Comentario(){
 
     }
-    public Comentario(Long id,String nombre, Date fechacreacion,String comentario){
+    public Comentario(Long id,String nombre, Date fechacreacion,String comentar){
         this.id=id;
         this.nombre=nombre;
         this.fechacreacion=fechacreacion;
-        this.comentario=comentario;
+        this.comentar=comentar;
     }
     public Date getFechacreacion(){
         return fechacreacion;
@@ -37,11 +38,11 @@ public class Comentario {
     public void setFechacreacion(Date fechacreacion){
         this.fechacreacion=fechacreacion;
     }
-    public String getComentario(){
-        return comentario;
+    public String getComentar(){
+        return comentar;
     }
-    public void setComentario(String comentario){
-        this.comentario=comentario;
+    public void setComentar(String comentar){
+        this.comentar=comentar;
     }
     public Long getId(){
         return id;
